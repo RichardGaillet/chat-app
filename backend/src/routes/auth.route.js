@@ -15,6 +15,6 @@ router.post("/login", login)
 
 router.post("/logout", logout)
 
-router.post("/updateProfile", protectRoute, updateProfile)
+router.post("/update-profile", protectRoute, updateProfile)
 
 export default router
