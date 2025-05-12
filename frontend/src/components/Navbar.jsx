@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { useAuthStore } from "../store/useAuthStore";
-import { LogOut, MessageSquare, Settings, User } from "lucide-react";
+import { Link } from "react-router-dom"
+import { useAuthStore } from "../store/useAuthStore"
+import { LogOut, MessageSquare, Settings, User } from "lucide-react"
 
 const Navbar = () => {
-  const { logout, authUser } = useAuthStore();
+  const { logout, authUser } = useAuthStore()
 
   return (
     <header className="border-base-300 bg-base-100 fixed top-0 z-40 w-full border-b backdrop-blur-lg">
@@ -32,12 +32,26 @@ const Navbar = () => {
 
             {authUser && (
               <>
-                <Link to={"/profile"} className={`btn btn-sm gap-2`}>
-                  <User className="size-5" />
+                <Link
+                  to={"/profile"}
+                  className={`btn btn-sm gap-2`}
+                >
+                  {authUser.profilePic ? (
+                    <img
+                      src={authUser.profilePic}
+                      alt=""
+                      className="size-5 rounded-full"
+                    />
+                  ) : (
+                    <User className="size-5" />
+                  )}
                   <span className="hidden sm:inline">Profile</span>
                 </Link>
 
-                <button className="flex items-center gap-2" onClick={logout}>
+                <button
+                  className="flex items-center gap-2"
+                  onClick={logout}
+                >
                   <LogOut className="size-5" />
                   <span className="hidden sm:inline">Logout</span>
                 </button>
@@ -47,6 +61,6 @@ const Navbar = () => {
         </div>
       </div>
     </header>
-  );
-};
-export default Navbar;
+  )
+}
+export default Navbar
